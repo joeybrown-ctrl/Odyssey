@@ -1,23 +1,23 @@
-module.exports = function(sequelize, DataTypes) {
-    const City = sequelize.define("City", {
-        cityName: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
+module.exports = function (sequelize, DataTypes) {
+  const City = sequelize.define("City", {
+    cityName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
 
-        visited: {
-            type: DataTypes.BOOLEAN,
-            default: false
-        }
-    })
+    visited: {
+      type: DataTypes.BOOLEAN,
+      default: false,
+    },
+  });
 
-    City.associate = function(models) {
-        City.belongsTo(models.User, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
+  City.associate = function (models) {
+    City.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
 
-    return City;
+  return City;
 };

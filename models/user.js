@@ -54,7 +54,7 @@ module.exports = function (sequelize, DataTypes) {
     // Associating User with Posts
     // When an User is deleted, also delete any associated Posts
     User.hasMany(models.City, {
-      onDelete: "cascade"
+      onDelete: "cascade",
     });
   };
 
