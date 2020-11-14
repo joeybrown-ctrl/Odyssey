@@ -1,5 +1,13 @@
 require("dotenv").config();
 
+const cloudinary = require('cloudinary');
+
+cloudinary.config({ 
+  cloud_name: 'sample', 
+  api_key: process.env.cloudinaryApiKey,
+  api_secret: process.env.cloudinarySecretKey 
+});
+
 // Requiring necessary npm packages
 const express = require("express");
 const session = require("express-session");
