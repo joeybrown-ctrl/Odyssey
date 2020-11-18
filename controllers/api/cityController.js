@@ -18,8 +18,8 @@ router.post("/", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  db.City.destroy({ where: { id: req.params.id } }).then((dbCity) =>
-    res.json(dbCity)
+  // eslint-disable-next-line prettier/prettier
+  db.City.destroy({ where: { id: req.params.id } }).then((dbCity) => res.json(dbCity)
   );
 });
 
