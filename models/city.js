@@ -17,7 +17,7 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false,
       },
     });
-    City.hasMany(models.Note)
+    City.hasMany(models.Note);
   };
 
   return City;

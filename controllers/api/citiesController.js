@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
  * City - Read One
  */
 router.get("/:id", (req, res) => {
-  db.City.findByPk(req.params.id,{include:db.Note})
+  db.City.findByPk(req.params.id, { include: db.Note })
     .then((dbModel) => res.json(dbModel))
     .catch((err) => res.status(422).json(err));
 });
@@ -27,7 +27,7 @@ router.post("/", (req, res) => {
   db.City.create({
     UserId: req.user.id,
     ...req.body,
-    visited:false
+    visited: false,
   })
     .then((dbModel) => res.json(dbModel))
     .catch((err) => res.status(422).json(err));

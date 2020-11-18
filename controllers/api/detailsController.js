@@ -30,7 +30,7 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   db.Image.create({
     UserId: req.user.id,
-    ...req.body
+    ...req.body,
     // req.body.image
   })
     .then((dbModel) => res.json(dbModel))

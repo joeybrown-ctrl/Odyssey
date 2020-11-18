@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
  * Note - Read One
  */
 router.get("/:id", (req, res) => {
-  db.Note.findByPk(req.params.id,{include: db.City})
+  db.Note.findByPk(req.params.id, { include: db.City })
     .then((dbModel) => res.json(dbModel))
     .catch((err) => res.status(422).json(err));
 });

@@ -62,16 +62,18 @@ router.get("/details/:id", isAuthenticated, (req, res) => {
   //     const details = dbModel.find(item => dbModel.id === +req.params.id)
   //     res.render("details", { user: req.user, datac: details });
   //   })
-  db.City.findOne({where: {id : req.params.id}, include:db.Note})
-  // deate values / peroivdu
-  .then((dbModel) =>{ 
-    delete dbModel._previousDataValues;
-    res.render("details", { user: req.user, datac: dbModel, note: dbModel.Notes })
-  })
+  db.City.findOne({ where: { id: req.params.id }, include: db.Note })
+    // deate values / peroivdu
+    .then((dbModel) => {
+      delete dbModel._previousDataValues;
+      res.render("details", {
+        user: req.user,
+        datac: dbModel,
+        note: dbModel.Notes,
+      });
+    })
     .catch((err) => res.status(422).json(err));
 });
-
-
 
 // router.get("/notes/:id", isAuthenticated, (req, res) => {
 //   /// note model
