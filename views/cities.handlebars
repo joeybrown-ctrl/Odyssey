@@ -76,11 +76,11 @@
         // sendPost does a post to our "api/posts" route and if successful, redirects us the the forum page
         function sendPost(city) {
          
-            $.post("/api/meshal", {
+            $.post("/api/city", {
                 cityName: city,
             })
                 .then(function () {
-                    window.location.replace("/meshal");
+                    window.location.replace("/city");
                     // If there's an error, log the error
                 })
                 .catch(function (err) {

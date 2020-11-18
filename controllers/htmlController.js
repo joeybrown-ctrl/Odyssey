@@ -45,8 +45,8 @@ router.get("/login", (req, res) => {
  * Forum Page -
  * Notice loading our posts, with that include!
  */
-router.get("/meshal", isAuthenticated, (req, res) => {
-  db.City.findAll({ raw: true, include: [db.User] }) // Joins User to Posts! And scrapes all the seqeulize stuff off
+router.get("/city", isAuthenticated, (req, res) => {
+  db.City.findAll({ raw: true, include: [db.User] }) // Joins User to Posts! And scrapes all the sequelize stuff off
     .then((dbModel) => {
       res.render("cities", { user: req.user, data: dbModel });
     })
@@ -63,7 +63,6 @@ router.get("/details/:id", isAuthenticated, (req, res) => {
   //     res.render("details", { user: req.user, datac: details });
   //   })
   db.City.findOne({ where: { id: req.params.id }, include: db.Note })
-    // deate values / peroivdu
     .then((dbModel) => {
       delete dbModel._previousDataValues;
       res.render("details", {
@@ -77,7 +76,7 @@ router.get("/details/:id", isAuthenticated, (req, res) => {
 
 // router.get("/notes/:id", isAuthenticated, (req, res) => {
 //   /// note model
-//   db.Note.findOne({where: {CityId : req.params.id}}) // Joins User to Posts! And scrapes all the seqeulize stuff off
+//   db.Note.findOne({where: {CityId : req.params.id}}) // Joins User to Posts! And scrapes all the sequelize stuff off
 //     .then((dbModel) => {
 //     })
 //     .catch((err) => res.status(422).json(err));

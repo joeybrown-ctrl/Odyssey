@@ -6,7 +6,7 @@ const detailsRoutes = require("./detailsController");
 const noteRoutes = require("./noteController");
 
 // Hook up to the router
-router.use("/meshal", citiesRoutes);
+router.use("/city", citiesRoutes);
 router.use("/users", userRoutes);
 router.use("/details", detailsRoutes);
 router.use("/notes", noteRoutes);
