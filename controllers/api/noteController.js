@@ -26,7 +26,8 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   db.Note.create({
     CityId: req.body.id,
-    ...req.body,
+    title: req.body.title,
+    body: req.body.body,
     /// req.body.title
   })
     .then((dbModel) => res.json(dbModel))

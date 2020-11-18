@@ -10,8 +10,8 @@
     </div>
     <div class="card-footer">
         <a href="/details/{{id}}" class="btn btn-success">Visited!</a>
-        <button type="button" class="btn btn-primary" onclick="getDatials('{{cityName}}')" id="Details">Details</button>
-        <button type="button" class="btn btn-danger" onclick="deleteFun()" id="Delete">Delete</button>
+        <button type="button" class="btn btn-primary details" id="Details" data-cityName="{{cityName}}" data-target="exampleModal">Details</button>
+        <button type="button" class="btn btn-danger delete" id="delete" data-attribute-id="{{id}}">Delete</button>
     </div>
 
 </div>
@@ -36,49 +36,3 @@
         </div>
     </div>
 </div>
-<script>
-
-    function deleteFun() {
-
-        $.ajax(
-            {
-                url: "/api/meshal/" + {{ id }},
-                 type: 'DELETE'
-            }
-        )
-        .done(function () {
-            window.location.replace("/meshal");
-            // If there's an error, log the error
-        });
-    }
-
-
-
-
-    function getDatials(country) {
-        
-        fetch("https://restcountries.eu/rest/v2/name/" + country)
-        .then(res => res.json())
-        .then(data => {
-            let modalBody = document.getElementById('modal-body')
-            let html =`
-            <ul class="list-group">
-                <li class="list-group-item">${data[0].name}</li>
-                <li class="list-group-item">${data[0].region}</li>
-                <li class="list-group-item">${data[0].capital}</li>
-                <li class="list-group-item"><img src="${data[0].flag}" width="50" height="50" alt="country"/></li>
-            </ul>
-            `;
-            $('#exampleModal').modal('show')
-            
-            $('#exampleModal').on('shown.bs.modal', (e) =>  {
-                modalBody.innerHTML = html
-                
-            })
-        })
-        .catch(err => console.log("Error:", err));
-
-
-        // If there's an error, log the error
-    }
-</script>
