@@ -45,14 +45,43 @@ router.get("/login", (req, res) => {
  * Forum Page -
  * Notice loading our posts, with that include!
  */
-router.get("/forum", isAuthenticated, (req, res) => {
-  db.Post.findAll({ raw: true, include: [db.User] }) // Joins User to Posts! And scrapes all the seqeulize stuff off
+router.get("/meshal", isAuthenticated, (req, res) => {
+  db.City.findAll({ raw: true, include: [db.User] }) // Joins User to Posts! And scrapes all the seqeulize stuff off
     .then((dbModel) => {
-      res.render("forum", { user: req.user, posts: dbModel });
+      res.render("cities", { user: req.user, data: dbModel });
+    })
+    .catch((err) => res.status(422).json(err));
+});
+/**
+ * Forum Page -
+ * Notice loading our posts, with that include!
+ */
+router.get("/details/:id", isAuthenticated, (req, res) => {
+  // db.City.findAll({ raw: true, include: [db.User] })
+  // .then((dbModel) => {
+  //     const details = dbModel.find(item => dbModel.id === +req.params.id)
+  //     res.render("details", { user: req.user, datac: details });
+  //   })
+  db.City.findOne({ where: { id: req.params.id }, include: db.Note })
+    // deate values / peroivdu
+    .then((dbModel) => {
+      delete dbModel._previousDataValues;
+      res.render("details", {
+        user: req.user,
+        datac: dbModel,
+        note: dbModel.Notes,
+      });
     })
     .catch((err) => res.status(422).json(err));
 });
 
+// router.get("/notes/:id", isAuthenticated, (req, res) => {
+//   /// note model
+//   db.Note.findOne({where: {CityId : req.params.id}}) // Joins User to Posts! And scrapes all the seqeulize stuff off
+//     .then((dbModel) => {
+//     })
+//     .catch((err) => res.status(422).json(err));
+// });
 /**
  * Generic Error Page
  */

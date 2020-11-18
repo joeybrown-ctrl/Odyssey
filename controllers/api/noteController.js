@@ -2,50 +2,51 @@ const db = require("../../models");
 const router = require("express").Router();
 
 /**
- * Post - Read All
+ * Note - Read All
  */
 router.get("/", (req, res) => {
-  db.Post.findAll(req.query)
+  db.Note.findAll(req.query)
     .then((dbModel) => res.json(dbModel))
     .catch((err) => res.status(422).json(err));
 });
 
 /**
- * Post - Read One
+ * Note - Read One
  */
 router.get("/:id", (req, res) => {
-  db.Post.findByPk(req.params.id)
+  db.Note.findByPk(req.params.id, { include: db.City })
     .then((dbModel) => res.json(dbModel))
     .catch((err) => res.status(422).json(err));
 });
 
 /**
- * Post - Create
+ * Note - Create
  * Notice how we are also taking in the User Id! Important!
  */
 router.post("/", (req, res) => {
-  db.Post.create({
-    UserId: req.user.id,
+  db.Note.create({
+    CityId: req.body.id,
     ...req.body,
+    /// req.body.title
   })
     .then((dbModel) => res.json(dbModel))
     .catch((err) => res.status(422).json(err));
 });
 
 /**
- * Post - Update
+ * Note - Update
  */
 router.put("/:id", (req, res) => {
-  db.Post.update(req.body, { where: { id: req.params.id } })
+  db.Note.update(req.body, { where: { id: req.params.id } })
     .then((dbModel) => res.json(dbModel))
     .catch((err) => res.status(422).json(err));
 });
 
 /**
- * Post - Delete
+ * Note - Delete
  */
 router.delete("/:id", (req, res) => {
-  db.Post.destroy({ where: { id: req.params.id } })
+  db.Note.destroy({ where: { id: req.params.id } })
     .then((dbModel) => res.json(dbModel))
     .catch((err) => res.status(422).json(err));
 });

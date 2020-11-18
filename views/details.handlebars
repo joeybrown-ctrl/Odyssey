@@ -1,0 +1,36 @@
+{{> navbar user }}
+
+{{log datac}}
+{{#each datac}}
+{{#if cityName}}
+    <ul class="list-group">
+        <li class="list-group-item"> {{cityName}} </li>
+    </ul>
+{{/if}}
+{{/each}}
+
+
+{{#each note}}
+{{#if dataValues.title}}
+    <ul class="list-group">
+        <li class="list-group-item"> {{dataValues.title}} </li>
+        <li class="list-group-item"> {{dataValues.body}} </li>
+    </ul>
+{{/if}}
+{{/each}}
+<input type="text" name="" id="title">
+
+<textarea id="note"></textarea>
+<button class="btn btn-success" onclick="saveNote()">Save note</button>
+<script>
+    function saveNote() {
+        const items = window.location.href.split('/')
+        const id = +items[items.length - 1]
+        console.log(id)
+        const note = document.getElementById("note").value
+        const title = document.getElementById("title").value
+        $.get('/api/notes/'+id).then(data => console.log(data))
+        $.post('/api/notes', {title,body: note,id}).then(data => console.log(data))
+    }
+    
+</script>

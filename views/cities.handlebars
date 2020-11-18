@@ -1,0 +1,91 @@
+{{> navbar user}}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+            <div class="jumbotron">
+                <h4 class="display-6">Hello, {{user.email}}!</h4>
+            </div>
+        </div>
+    </div>
+   
+
+    <div class="row">
+        <div class="col-md">
+            <form class="forum-post">
+                <fieldset>
+                    <legend>Create Your Own city</legend>
+                   
+                    <div class="form-group">
+                        <label for="title-input">City</label>
+                        <input type="text" class="form-control" id="title-input" aria-describedby="postHelp"
+                            placeholder="Enter  your city ">
+                        <small id="postHelp" class="form-text text-muted">This'l be shared!</small>
+                    </div>
+                
+                    <button type="submit" class="btn btn-primary">Add!</button>
+                </fieldset>
+            </form>
+            <br />
+        </div>
+    </div>
+
+
+
+ <div class="row">
+        <div class="col-md">
+            <legend>serach a city </legend>
+            <div id="forum-posts">
+            {{#each data}}
+            {{> city-blockc }}
+
+            {{/each}}
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Getting references to our form and inputs
+        const postForm = $("form.forum-post");
+        const titleInput = $("input#title-input");
+        const bodyInput = $("textarea#body-input");
+
+        // When the form is submitted, we validate there's a title and body entered
+        postForm.on("submit", function (event) {
+            event.preventDefault();
+            console.log(bodyInput.val(), titleInput.val())
+            var cityData = {
+              cityName : titleInput.val().trim(),
+            };
+
+            if (!cityData.cityName ) {
+                return;
+            }
+
+
+            // If we have a title and password  we run the sendPost function and clear the form
+            sendPost(cityData.cityName);
+            titleInput.val("");
+        });
+
+        // sendPost does a post to our "api/posts" route and if successful, redirects us the the forum page
+        function sendPost(city) {
+         
+            $.post("/api/meshal", {
+                cityName: city,
+            })
+                .then(function () {
+                    window.location.replace("/meshal");
+                    // If there's an error, log the error
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
+        }
+    });
+</script>

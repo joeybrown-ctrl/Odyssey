@@ -1,0 +1,84 @@
+<div class="forum-post-card card text-white bg-primary mb-3">
+    <div class="card-header">
+        <h4 class="text-white">{{cityName}}</h4>
+    </div>
+    <div class="card-body">
+        {{!-- <p class="card-text">{{visited}}</p> --}}
+        by {{'User.email'}}
+        @ {{createdAt}}
+
+    </div>
+    <div class="card-footer">
+        <a href="/details/{{id}}" class="btn btn-success">Visited!</a>
+        <button type="button" class="btn btn-primary" onclick="getDatials('{{cityName}}')" id="Details">Details</button>
+        <button type="button" class="btn btn-danger" onclick="deleteFun()" id="Delete">Delete</button>
+    </div>
+
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    function deleteFun() {
+
+        $.ajax(
+            {
+                url: "/api/meshal/" + {{ id }},
+                 type: 'DELETE'
+            }
+        )
+        .done(function () {
+            window.location.replace("/meshal");
+            // If there's an error, log the error
+        });
+    }
+
+
+
+
+    function getDatials(country) {
+        
+        fetch("https://restcountries.eu/rest/v2/name/" + country)
+        .then(res => res.json())
+        .then(data => {
+            let modalBody = document.getElementById('modal-body')
+            let html =`
+            <ul class="list-group">
+                <li class="list-group-item">${data[0].name}</li>
+                <li class="list-group-item">${data[0].region}</li>
+                <li class="list-group-item">${data[0].capital}</li>
+                <li class="list-group-item"><img src="${data[0].flag}" width="50" height="50" alt="country"/></li>
+            </ul>
+            `;
+            $('#exampleModal').modal('show')
+            
+            $('#exampleModal').on('shown.bs.modal', (e) =>  {
+                modalBody.innerHTML = html
+                
+            })
+        })
+        .catch(err => console.log("Error:", err));
+
+
+        // If there's an error, log the error
+    }
+</script>
