@@ -1,11 +1,14 @@
 require("dotenv").config();
 
-const cloudinary = require('cloudinary');
+const cloudinary = require("cloudinary");
 
-cloudinary.config({ 
-  cloud_name: 'odysseyuserimages', 
+cloudinary.config({
+  // eslint-disable-next-line camelcase
+  cloud_name: "odysseyuserimages",
+  // eslint-disable-next-line camelcase
   api_key: process.env.cloudinaryApiKey,
-  api_secret: process.env.cloudinarySecretKey 
+  // eslint-disable-next-line camelcase
+  api_secret: process.env.cloudinarySecretKey,
 });
 
 // Requiring necessary npm packages
