@@ -1,53 +1,91 @@
-{{> navbar user }}
+{{> navbar user}}
 
-<div class="row">
-    <div class="col">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="..." class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </div>
-</div>
-
-{{!-- Picture uploader code here --}}
-
-<div class="row">
-    <div class="col text-center">
-        <div class="card">
-            <h5 class="card-header">Notes</h5>
-            <div class="card-body">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                </ul>
-                {{!-- probably some sort of form + submit thing here --}}
-                <a href="" class="btn btn-primary">Enter Note</a>
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+            <div class="jumbotron">
+                <h4 class="display-6">Hello, {{user.email}}!</h4>
             </div>
         </div>
     </div>
+   
+
+    <div class="row">
+        <div class="col-md">
+            <form class="forum-post">
+                <fieldset>
+                    <legend>Create Your Own city</legend>
+                   
+                    <div class="form-group">
+                        <label for="title-input">City</label>
+                        <input type="text" class="form-control" id="title-input" aria-describedby="postHelp"
+                            placeholder="Enter  your city ">
+                        <small id="postHelp" class="form-text text-muted">This'l be shared!</small>
+                    </div>
+                
+                    <button type="submit" class="btn btn-primary">Add!</button>
+                </fieldset>
+            </form>
+            <br />
+        </div>
+    </div>
+
+
+
+ <div class="row">
+        <div class="col-md">
+            <legend>serach a city </legend>
+            <div id="forum-posts">
+            {{#each data}}
+            {{> city-blockc }}
+
+            {{/each}}
+            </div>
+        </div>
+
+
+    </div>
+
 </div>
+
+<script>
+    $(document).ready(function () {
+        // Getting references to our form and inputs
+        const postForm = $("form.forum-post");
+        const titleInput = $("input#title-input");
+        const bodyInput = $("textarea#body-input");
+
+        // When the form is submitted, we validate there's a title and body entered
+        postForm.on("submit", function (event) {
+            event.preventDefault();
+            console.log(bodyInput.val(), titleInput.val())
+            var cityData = {
+              cityName : titleInput.val().trim(),
+            };
+
+            if (!cityData.cityName ) {
+                return;
+            }
+
+
+            // If we have a title and password  we run the sendPost function and clear the form
+            sendPost(cityData.cityName);
+            titleInput.val("");
+        });
+
+        // sendPost does a post to our "api/posts" route and if successful, redirects us the the forum page
+        function sendPost(city) {
+         
+            $.post("/api/meshal", {
+                cityName: city,
+            })
+                .then(function () {
+                    window.location.replace("/meshal");
+                    // If there's an error, log the error
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
+        }
+    });
+</script>
