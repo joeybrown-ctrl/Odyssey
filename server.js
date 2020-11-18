@@ -3,7 +3,7 @@ require("dotenv").config();
 const cloudinary = require('cloudinary');
 
 cloudinary.config({ 
-  cloud_name: 'sample', 
+  cloud_name: 'odysseyuserimages', 
   api_key: process.env.cloudinaryApiKey,
   api_secret: process.env.cloudinarySecretKey 
 });
