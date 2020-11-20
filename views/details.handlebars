@@ -40,10 +40,9 @@
                 <div class="card-footer text-muted">
                 </div>
             </div>
-            
+
         </div>
     </div>
-
 
     {{#each note}}
     {{#if dataValues.title}}
@@ -58,11 +57,13 @@
     </div>
     {{/if}}
     {{/each}}
-
-
-
 </div>
 
+<button id="upload_widget">Upload photo!</button>
+
+<div class="slick">
+    <div><img src=""></div>
+</div>
 
 
 <script>
@@ -75,5 +76,34 @@
         $.get('/api/notes/' + id).then(data => console.log(data))
         $.post('/api/notes', { title, body: note, id }).then(data => console.log(data))
     }
-
 </script>
+<script>
+    $(document).ready(() => {
+        $(".slick").slick({
+            centerMode: true,
+            centerPadding: "60px",
+            slidesToShow: 3,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: "40px",
+                        slidesToShow: 3,
+                    },
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: "40px",
+                        slidesToShow: 1,
+                    },
+                },
+            ],
+        });
+    });
+</script>
+<script src="/javascript/odyssey.js" type="text/javascript"></script>
