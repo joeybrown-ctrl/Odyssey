@@ -1,13 +1,20 @@
 .navbar {
 	text-align: center;
+	/* margin-bottom: 25px; */
+}
+
+.containers {
+	margin-top: 25px;
+	margin-bottom: 25px;
+	padding-bottom: 50px;
 }
 
 .jumbotron {
-	margin-top: 25px;;
+	margin-top: 25px;
 }
 
 .heroImage {
-	background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url("../images/proj-2-img-top.jpg");
+	background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url("../images/joshua-woroniecki--5nwt_aN2E0-unsplash\ \(1\).jpg");
 	min-height: 300px;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -26,13 +33,17 @@
 	width: 50%;
 }
 
+.notes {
+	padding-bottom: 50px;
+}
+
 form.signup,
 form.login {
 	margin-top: 50px;
 }
 
 footer {
-  text-align: center;
-  /* background-color: black; */
-  padding-top: 20px;
+	text-align: center;
+	padding-top: 20px;
+	margin-top: 25px;
 } 
