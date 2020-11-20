@@ -4,17 +4,17 @@ const router = require("express").Router();
 /**
  * Image - Read All
  */
-// router.get("/", (req, res) => {
-//   db.City.findAll(req.query)
-//     .then((dbModel) => res.json(dbModel))
-//     .catch((err) => res.status(422).json(err));
-// });
+router.get("/", (req, res) => {
+  db.Image.findAll(req.query)
+    .then((dbModel) => res.json(dbModel))
+    .catch((err) => res.status(422).json(err));
+});
 
 /**
  * Image - Read One
  */
 router.get("/:id", (req, res) => {
-  db.City.findByPk(req.params.id)
+  db.Image.findByPk(req.params.id)
     .then((dbModel) => res.json(dbModel))
     .catch((err) => res.status(422).json(err));
 });

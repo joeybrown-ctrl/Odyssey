@@ -9,6 +9,21 @@ const myWidget = cloudinary.createUploadWidget(
     }
     if (!error && result && result.event === "success") {
       // result.info.url will return the url of the uploaded photo
+      // TODO: Supply to imageUrl of Image
+      const data = {
+        image: result.info.url,
+        CityId: window.location.pathname.split("/")[2],
+      };
+      $.ajax(
+        {
+          url: "/api/details/",
+          type: "POST",
+          data: data,
+        },
+        (result) => {
+          console.log(result);
+        }
+      );
     }
   }
 );
