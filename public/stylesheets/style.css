@@ -22,3 +22,7 @@ footer {
   background-color: black;
   padding-top: 20px;
 } 
+
+.userImages {
+	max-width: 100%;
+}
