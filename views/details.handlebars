@@ -3,17 +3,17 @@
 
 <div class="container">
     {{log datac}}
-    {{#each datac}}
-    {{#if cityName}}
+    {{!-- {{#each datac}} --}}
+    {{#if datac.cityName}}
     <div class="jumbotron">
         <div class="heroImage">
             <div class="heroContents">
-                <h4 class="display-6">{{cityName}}</h4>
+                <h4 class="display-6">{{datac.cityName}}</h4>
             </div>
         </div>
     </div>
     {{/if}}
-    {{/each}}
+    {{!-- {{/each}} --}}
 
     <div class="row justify-content-center" style="padding-top: 20px;">
         <div class="col-md text center">
@@ -48,19 +48,19 @@
     <br>
 
 
-    {{#each note}}
-    {{#if dataValues.title}}
+    {{!-- {{#each note}}
+    {{#if note.title}} --}}
 
     <div class="row justify-content-center">
         <div class="card-body text-center bg-secondary">
             <h5 class="card-title text-white">Saved Notes</h5>
             <hr>
-                {{#each note}}
-                {{#if dataValues.title}}
+                {{#each datac.Notes}}
+                {{#if this.dataValues.title}}
             
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><p>Note Title:</p> {{dataValues.title}} </li>
-                            <li class="list-group-item"> {{dataValues.body}} </li>
+                            <li class="list-group-item"><p>Note Title:</p> {{this.dataValues.title}} </li>
+                            <li class="list-group-item"> {{this.dataValues.body}} </li>
                         </ul>
                         <br>
                 
@@ -69,15 +69,16 @@
         </div>
     </div>
 
-    {{/if}}
-    {{/each}}
-</div>
+    {{!-- {{/if}}
+    {{/each}} --}}
 
 
-<button id="upload_widget">Upload photo!</button>
 
-<div class="slick">
-    <div><img src=""></div>
+    <button id="upload_widget">Upload photo!</button>
+
+    <div class="slick">
+        <div><img src=""></div>
+    </div>
 </div>
 
 
@@ -101,6 +102,7 @@
 
 <textarea id="note"></textarea>
 <button class="btn btn-success" onclick="saveNote()">Save note</button> --}}
+
 <script>
     function saveNote() {
         const items = window.location.href.split('/')
