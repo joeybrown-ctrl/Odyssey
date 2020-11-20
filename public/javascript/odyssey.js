@@ -1,8 +1,7 @@
 $(document).ready(() => {
   getImages();
-  $('.slick').slick({});
+  $(".slick").slick({});
 });
-
 
 const myWidget = cloudinary.createUploadWidget(
   {
