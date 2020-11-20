@@ -4,7 +4,6 @@ const passport = require("../config/passport");
 const router = require("express").Router();
 const nodemailer = require("nodemailer");
 
-
 router.post("/login", passport.authenticate("local"), (req, res) => {
   // Sending back a password, even a hashed password, isn't a good idea
   res.json({
@@ -23,7 +22,7 @@ router.post("/signup", (req, res) => {
   })
     .then(() => {
       res.redirect(307, "/auth/login");
-      let transporter = nodemailer.createTransport({
+      const transporter = nodemailer.createTransport({
         service: "SendPulse",
         auth: {
           user: "otbm754@gmail.com", // generated ethereal user
@@ -32,34 +31,30 @@ router.post("/signup", (req, res) => {
       });
 
       // send mail with defined transport object
-      transporter.sendMail({
-        from: "meshalsaud44@gmail.com ", // sender address
-        to: req.body.email, // list of receivers
-        subject: "Hello ✔", // Subject line
-        text: "Hello world?", // plain text body
-        html: "<b>Hello world?</b>", // html body
-      }).then(mes => {
-        console.log("Message sent: %s", mes.messageId);
-        // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+      transporter
+        .sendMail({
+          from: "meshalsaud44@gmail.com ", // sender address
+          to: req.body.email, // list of receivers
+          subject: "Hello ✔", // Subject line
+          text: "Hello world?", // plain text body
+          html: "<b>Hello world?</b>", // html body
+        })
+        .then((mes) => {
+          console.log("Message sent: %s", mes.messageId);
+          // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 
-        // Preview only available when sending through an Ethereal account
-        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(mes));
-        // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+          // Preview only available when sending through an Ethereal account
+          console.log("Preview URL: %s", nodemailer.getTestMessageUrl(mes));
+          // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+        })
 
-      })
-
-        .catch(err => {
-
-          console.log(err)
-
+        .catch((err) => {
+          console.log(err);
         });
     })
     .catch((err) => {
       res.status(401).json(err);
     });
-
-
-    
 });
 
 // Route for logging user out
