@@ -27,7 +27,10 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   db.User.scope("withPassword")
     .create(req.body)
-    .then((dbModel) => res.json(dbModel))
+    .then((dbModel) => {
+      res.json(dbModel);
+    })
+
     .catch((err) => res.status(422).json(err));
 });
 

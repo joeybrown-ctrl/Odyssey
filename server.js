@@ -1,15 +1,15 @@
 require("dotenv").config();
 
-const cloudinary = require("cloudinary");
+// const cloudinary = require("cloudinary");
 
-cloudinary.config({
-  // eslint-disable-next-line camelcase
-  cloud_name: "odysseyuserimages",
-  // eslint-disable-next-line camelcase
-  api_key: process.env.cloudinaryApiKey,
-  // eslint-disable-next-line camelcase
-  api_secret: process.env.cloudinarySecretKey,
-});
+// cloudinary.config({
+//   // eslint-disable-next-line camelcase
+//   cloud_name: "odysseyuserimages",
+//   // eslint-disable-next-line camelcase
+//   api_key: process.env.cloudinaryApiKey,
+//   // eslint-disable-next-line camelcase
+//   api_secret: process.env.cloudinarySecretKey,
+// });
 
 // Requiring necessary npm packages
 const express = require("express");
@@ -21,7 +21,7 @@ const passport = require("./config/passport");
 const routes = require("./controllers");
 
 // Setting up port and requiring models for syncing
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5000;
 const db = require("./models");
 
 // Bringing in Morgan, a nice logger for our server
@@ -52,7 +52,7 @@ app.set("view engine", "handlebars");
 // Add all our routes
 app.use(routes);
 
-const config = { force: false };
+const config = { force: true };
 if (process.env.NODE_ENV === "test") {
   config.force = true;
 }
