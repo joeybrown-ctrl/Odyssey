@@ -28,6 +28,10 @@ router.get("/signup", (req, res) => {
   } else {
     res.render("signup", { user: req.user });
   }
+  
+  
+
+
 });
 
 /**
@@ -62,12 +66,14 @@ router.get("/details/:id", isAuthenticated, (req, res) => {
   //     const details = dbModel.find(item => dbModel.id === +req.params.id)
   //     res.render("details", { user: req.user, datac: details });
   //   })
+  // include left join 
   db.City.findOne({ where: { id: req.params.id }, include: db.Note })
     .then((dbModel) => {
-      delete dbModel._previousDataValues;
+      // delete dbModel._previousDataValues;
+      console.log(dbModel.dataValues)
       res.render("details", {
         user: req.user,
-        datac: dbModel,
+        datac: dbModel.dataValues,
         note: dbModel.Notes,
       });
     })
