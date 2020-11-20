@@ -28,10 +28,10 @@ const myWidget = cloudinary.createUploadWidget(
   }
 );
 
-// document.getElementById("upload_widget").addEventListener(
-//   "click",
-//   () => {
-//     myWidget.open();
-//   },
-//   false
-// );
+document.getElementById("upload_widget").addEventListener(
+  "click",
+  () => {
+    myWidget.open();
+  },
+  false
+);
