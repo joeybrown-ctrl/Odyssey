@@ -50,7 +50,6 @@ router.get("/login", (req, res) => {
  * Notice loading our posts, with that include!
  */
 router.get("/city", isAuthenticated, (req, res) => {
-  console.log(req);
   db.City.findAll({
     where: { UserId: req.user.id },
     raw: true,
@@ -58,7 +57,6 @@ router.get("/city", isAuthenticated, (req, res) => {
   }) // Joins User to Posts! And scrapes all the sequelize stuff off
     .then((dbModel) => {
       res.render("cities", { data: dbModel, user: req.user });
-      // console.log(req.user)
     })
     .catch((err) => res.status(422).json(err));
 });
@@ -79,14 +77,12 @@ router.get("/details/:id", isAuthenticated, (req, res) => {
   })
     .then((dbModel) => {
       // delete dbModel._previousDataValues;
-      // console.log(dbModel);
       res.render("details", {
         user: req.user,
         datac: dbModel.dataValues,
         // note: dbModel.Notes,
         // images: dbModel.Images
       });
-      // console.log(dbModel.dataValues.Images)
     })
     .catch((err) => res.status(422).json(err));
 });
