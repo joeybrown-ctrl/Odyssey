@@ -47,3 +47,7 @@ footer {
 	padding-top: 20px;
 	margin-top: 25px;
 } 
+
+.userImages {
+	max-width: 100%;
+}

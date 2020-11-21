@@ -1,3 +1,8 @@
+$(document).ready(() => {
+  getImages();
+  $(".slick").slick({});
+});
+
 const myWidget = cloudinary.createUploadWidget(
   {
     cloudName: "odysseyuserimages",
@@ -35,3 +40,19 @@ document.getElementById("upload_widget").addEventListener(
   },
   false
 );
+
+function getImages() {
+  $.ajax({
+    url: "/api/details/",
+    method: "GET",
+  }).then((res) => {
+    res.forEach((imageUrl) => {
+      const newDiv = $("<div>");
+      const newImg = $("<img>");
+      newImg.addClass("userImages");
+      newImg.attr("src", imageUrl.image);
+      newDiv.append(newImg);
+      $("#images").append(newDiv);
+    });
+  });
+}

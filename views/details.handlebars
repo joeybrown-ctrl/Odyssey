@@ -107,6 +107,10 @@
 <textarea id="note"></textarea>
 <button class="btn btn-success" onclick="saveNote()">Save note</button> --}}
 
+<div class="slick mx-auto" style="width: 90%;" id="images"> {{!--Div that contains all carousel images--}}
+    {{!-- <div><img src="http://res.cloudinary.com/odysseyuserimages/image/upload/v1605849907/User%20Photos/Selfie_gipjuu.jpg"></div> --}}
+</div>
+    
 <script>
     function saveNote() {
         const items = window.location.href.split('/')
@@ -117,37 +121,13 @@
         const title = document.getElementById("title").value
         //$.get('/api/notes/' + id).then(data => console.log(data))
         //$.post('/api/notes', { title, body: note, id }).then(data => console.log(data))
-        $.get('/api/notes/'+id).then(data => console.log(data))
-        $.post('/api/notes', {title,body: note,id}).then(data => location.reload())
+        $.get('/api/notes/' + id).then(data => console.log(data))
+        $.post('/api/notes', { title, body: note, id }).then(data => location.reload())
     }
 </script>
 <script>
     $(document).ready(() => {
-        $(".slick").slick({
-            centerMode: true,
-            centerPadding: "60px",
-            slidesToShow: 3,
-            responsive: [
-                {
-                    breakpoint: 768,
-                    settings: {
-                        arrows: false,
-                        centerMode: true,
-                        centerPadding: "40px",
-                        slidesToShow: 3,
-                    },
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        arrows: false,
-                        centerMode: true,
-                        centerPadding: "40px",
-                        slidesToShow: 1,
-                    },
-                },
-            ],
-        });
+        $('.slick').slick({});
     });
 </script>
 <script src="/javascript/odyssey.js" type="text/javascript"></script>
