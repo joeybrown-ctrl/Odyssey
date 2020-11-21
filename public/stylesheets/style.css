@@ -50,4 +50,11 @@ footer {
 
 .userImages {
 	max-width: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.carousel-btn {
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
