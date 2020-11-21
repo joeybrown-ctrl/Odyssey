@@ -51,6 +51,10 @@ router.get("/login", (req, res) => {
  */
 router.get("/city", isAuthenticated, (req, res) => {
   db.City.findAll({
+    order: [
+      // Will escape title and validate DESC against a list of valid direction parameters
+      ["updatedAt", "DESC"],
+    ],
     where: { UserId: req.user.id },
     raw: true,
     include: [db.User],
