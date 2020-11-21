@@ -22,15 +22,18 @@
             {{!-- <p>upload photos using Cloudinary and view them here on Odyssey</p> --}}
             <button class="btn btn-primary" id="upload_widget">upload</button>
 
-            <div class="slick">
-                <div><img src=""></div>
+            <div class="slick mx-auto" style="width: 90%;" id="images"> {{!--Div that contains all carousel images--}}
+                {{#each datac.Images}}
+                <div><img class="userImages rounded" src="{{this.dataValues.image}}" alt={{this.dataValues.caption}}>
+                </div>
+                {{/each}}
             </div>
         </div>
     </div>
-    
+
     <br>
     <hr>
-    
+
 
     <div class="row justify-content-center" style="padding-top: 20px;">
         <div class="col-md text center">
@@ -65,23 +68,25 @@
         <div class="card-body text-center bg-dark">
             <h5 class="card-title text-white">saved notes</h5>
             <hr>
-                {{#each datac.Notes}}
-                {{#if this.dataValues.title}}
-            
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><p>title:</p> {{this.dataValues.title}} </li>
-                            <li class="list-group-item"> {{this.dataValues.body}} </li>
-                        </ul>
-                        <br>
-                
-                {{/if}}
-                {{/each}}
+            {{#each datac.Notes}}
+            {{#if this.dataValues.title}}
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <p>title:</p> {{this.dataValues.title}}
+                </li>
+                <li class="list-group-item"> {{this.dataValues.body}} </li>
+            </ul>
+            <br>
+
+            {{/if}}
+            {{/each}}
         </div>
     </div>
     <br>
     <br>
 
-    
+
 
 </div>
 
@@ -107,31 +112,32 @@
 <textarea id="note"></textarea>
 <button class="btn btn-success" onclick="saveNote()">Save note</button> --}}
 
-<div class="slick mx-auto" style="width: 90%;" id="images"> {{!--Div that contains all carousel images--}}
-    {{#each datac.Images}}
-        <div><img src="{{this.dataValues.image}}" alt={{this.dataValues.caption}}></div>
-    {{/each}}
-    
-</div>
-    
+
+
 <script>
-    
+
     function saveNote() {
         const items = window.location.href.split('/')
         console.log(items)
         const ID = +items[items.length - 1]
-      //  console.log(id)
+        //  console.log(id)
         const note = document.getElementById("note").value
         const ti = document.getElementById("title").value
         //$.get('/api/notes/' + id).then(data => console.log(data))
         //$.post('/api/notes', { title, body: note, id }).then(data => console.log(data))
-//        $.get('/api/notes/' + id).then(data => console.log(data))
+        //        $.get('/api/notes/' + id).then(data => console.log(data))
         $.post('/api/notes', { title: ti, body: note, id: ID }).then(data => location.reload())
     }
 </script>
 <script>
     $(document).ready(() => {
-        $('.slick').slick({});
+        $('.slick').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            nextArrow: '<button class="btn btn-primary carousel-btn">Next</button>',
+            prevArrow: '<button class="btn btn-primary carousel-btn">Previous</button>',
+        });
     });
 </script>
 <script src="/javascript/odyssey.js" type="text/javascript"></script>
