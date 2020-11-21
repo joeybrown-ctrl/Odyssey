@@ -1,6 +1,11 @@
 $(document).ready(() => {
-  // getImages();
-  $(".slick").slick({});
+  $(".slick").slick({
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    nextArrow: "<button class='btn btn-primary carousel-btn'>Next</button>",
+    prevArrow: "<button class='btn btn-primary carousel-btn'>Previous</button>",
+  });
 });
 
 const myWidget = cloudinary.createUploadWidget(
@@ -19,16 +24,15 @@ const myWidget = cloudinary.createUploadWidget(
         image: result.info.url,
         CityId: window.location.pathname.split("/")[2],
       };
-      $.ajax(
-        {
-          url: "/api/details/",
-          type: "POST",
-          data: data,
-        },
-        (result) => {
-          console.log(result);
-        }
-      );
+      $.ajax({
+        url: "/api/details/",
+        type: "POST",
+        data: data,
+      }).then((result) => {
+        console.log(result);
+        location.reload();
+        return false;
+      });
     }
   }
 );

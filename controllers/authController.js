@@ -29,9 +29,11 @@ router.post("/signup", (req, res) => {
       const msg = {
         to: req.body.email, // Change to your recipient
         from: " odyssey.travelogue@gmail.com", // Change to your verified sender
-        subject: "Sending with SendGrid is Fun",
-        text: "and easy to do anywhere, even with Node.js",
-        html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+        subject: "Welcome to Odyssey!",
+        text:
+          "Thank you for signing up with Odyssey. Your account is now activated.",
+        html:
+          "<strong>Thank you for signing up with Odyssey. Your account is now activated.</strong>",
       };
       sgMail
         .send(msg)
