@@ -104,21 +104,25 @@
 <button class="btn btn-success" onclick="saveNote()">Save note</button> --}}
 
 <div class="slick mx-auto" style="width: 90%;" id="images"> {{!--Div that contains all carousel images--}}
-    {{!-- <div><img src="http://res.cloudinary.com/odysseyuserimages/image/upload/v1605849907/User%20Photos/Selfie_gipjuu.jpg"></div> --}}
+    {{#each datac.Images}}
+        <div><img src="{{this.dataValues.image}}" alt={{this.dataValues.caption}}></div>
+    {{/each}}
+    
 </div>
     
 <script>
+    
     function saveNote() {
         const items = window.location.href.split('/')
         console.log(items)
-        const id = +items[items.length - 1]
-        console.log(id)
+        const ID = +items[items.length - 1]
+      //  console.log(id)
         const note = document.getElementById("note").value
-        const title = document.getElementById("title").value
+        const ti = document.getElementById("title").value
         //$.get('/api/notes/' + id).then(data => console.log(data))
         //$.post('/api/notes', { title, body: note, id }).then(data => console.log(data))
-        $.get('/api/notes/' + id).then(data => console.log(data))
-        $.post('/api/notes', { title, body: note, id }).then(data => location.reload())
+//        $.get('/api/notes/' + id).then(data => console.log(data))
+        $.post('/api/notes', { title: ti, body: note, id: ID }).then(data => location.reload())
     }
 </script>
 <script>

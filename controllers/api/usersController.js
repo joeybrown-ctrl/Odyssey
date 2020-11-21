@@ -4,20 +4,27 @@ const router = require("express").Router();
 /**
  * User Read - All
  */
-router.get("/", (req, res) => {
-  db.User.findAll(req.query)
+// router.get("/", (req, res) => {
+//   db.User.findAll(req.query)
+//     .then((dbModel) => res.json(dbModel))
+//     .catch((err) => res.status(422).json(err));
+// });
+
+router.get("/:id", (req, res) => {
+  db.User.findAll(req.params.id, { include: db.City })
     .then((dbModel) => res.json(dbModel))
     .catch((err) => res.status(422).json(err));
 });
 
+
 /**
  * User Read - One
  */
-router.get("/:id", (req, res) => {
-  db.User.findByPk(req.params.id)
-    .then((dbModel) => res.json(dbModel))
-    .catch((err) => res.status(422).json(err));
-});
+// router.get("/:id", (req, res) => {
+//   db.User.findByPk(req.params.id,{ include: db.City })
+//     .then((dbModel) => res.json(dbModel))
+//     .catch((err) => res.status(422).json(err));
+// });
 
 /**
  * User - Create

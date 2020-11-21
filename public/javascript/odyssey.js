@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  getImages();
+  // getImages();
   $(".slick").slick({});
 });
 
@@ -42,11 +42,13 @@ document.getElementById("upload_widget").addEventListener(
 );
 
 function getImages() {
+  const id=window.location.pathname.split("/")[2]
   $.ajax({
-    url: "/api/details/",
+    url: "/api/details/"+id,
     method: "GET",
   }).then((res) => {
-    res.forEach((imageUrl) => {
+    console.log(res)
+    res.Images.forEach((imageUrl) => {
       const newDiv = $("<div>");
       const newImg = $("<img>");
       newImg.addClass("userImages");
@@ -54,5 +56,6 @@ function getImages() {
       newDiv.append(newImg);
       $("#images").append(newDiv);
     });
-  });
+    
+  })
 }
