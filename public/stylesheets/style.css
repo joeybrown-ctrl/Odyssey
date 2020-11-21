@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+
+body {
+	background-image: url("../images/foggy_birds.png");
+
+=======
 .navbar {
 	text-align: center;
 	/* margin-bottom: 25px; */
@@ -11,6 +17,7 @@
 
 .jumbotron {
 	margin-top: 25px;
+>>>>>>> a69d4cdb0ee290d67a3357f0dfcbe7fefbd3769c
 }
 
 .heroImage {
