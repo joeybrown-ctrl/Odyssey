@@ -9,7 +9,7 @@
             <div class="heroContents">
                 <br>
                 <br>
-                <h4 class="display-6">{{datac.cityName}}</h4>
+                <h4 class="display-6">{{datac.cityName}} Travelogue</h4>
                 <hr>
             </div>
         </div>
@@ -18,9 +18,9 @@
 
     <div class="row justify-content-center">
         <div class="col-md text-center text-white">
-            <h4 class="display-6">a place for visualization</h4>
-            <p>upload photos using Cloudinary and view them here on Odyssey</p>
-            <button class="btn btn-primary" id="upload_widget">upload photo!</button>
+            <h4 class="display-6">upload and view pictures</h4>
+            {{!-- <p>upload photos using Cloudinary and view them here on Odyssey</p> --}}
+            <button class="btn btn-primary" id="upload_widget">upload</button>
 
             <div class="slick">
                 <div><img src=""></div>
@@ -36,22 +36,20 @@
         <div class="col-md text center">
             <div class="card text-center">
                 <div class="card-header bg-dark text-white">
-                    <h5 class="card-title text-center">keep track of your thoughts</h5>
-                    <p>jot down plans or past observations</p>
+                    <h5 class="card-title text-center">log notes</h5>
+                    {{!-- <p>jot down plans or past observations</p> --}}
                 </div>
                 <div class="card-body bg-dark text-white">
-                    <h6>notes</h6>
-                    <hr>
                     <div class="row justify-content-center">
                         <input type="text" class="form-control" id="title" placeholder="note title">
                     </div>
                     <br>
                     <div class="row justify-content-center">
-                        <textarea class="form-control z-depth-1" rows="3" id="note" placeholder="Enter note"></textarea>
+                        <textarea class="form-control z-depth-1" rows="3" id="note" placeholder="enter note"></textarea>
                     </div>
                     <br>
                     <div class="row justify-content-center">
-                        <button class="btn btn-info" onclick="saveNote()">Save</button>
+                        <button class="btn btn-info" onclick="saveNote()">log</button>
                     </div>
                     <br>
                 </div>
@@ -65,7 +63,7 @@
 
     <div class="row justify-content-center notes">
         <div class="card-body text-center bg-dark">
-            <h5 class="card-title text-white">Saved Notes</h5>
+            <h5 class="card-title text-white">saved notes</h5>
             <hr>
                 {{#each datac.Notes}}
                 {{#if this.dataValues.title}}

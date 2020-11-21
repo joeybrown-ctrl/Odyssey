@@ -1,7 +1,7 @@
 
 
     {{!-- city card that populates three buttons: Add, Details, and Delete. --}}
-    <div class="forum-post-card card text-white bg-primary mb-3">
+    <div class="forum-post-card card text-white bg-secondary mb-3">
         <div class="card-header">
             <h4 class="text-white">{{cityName}}</h4>
         </div>
@@ -12,7 +12,7 @@
         </div>
 
         <div class="card-footer">
-            <a href="/details/{{id}}" class="btn btn-warning">Add</a>
+            <a href="/details/{{id}}" class="btn btn-warning">Log</a>
             <button type="button" class="btn btn-secondary details" id="Details" data-cityName="{{cityName}}" data-target="exampleModal">Details</button>
             <button type="button" class="btn btn-danger delete" id="delete" data-attribute-id="{{id}}">Delete</button>
         </div>
@@ -33,7 +33,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    {{!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
                 </div>
             </div>
         </div>
