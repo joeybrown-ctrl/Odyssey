@@ -1,6 +1,5 @@
 function deleteFun() {
   const buttonId = $(this).attr("data-attribute-id");
-  console.log(buttonId);
   $.ajax({
     url: "/api/city/" + buttonId,
     type: "DELETE",
@@ -17,7 +16,6 @@ function getDetails() {
   fetch("https://restcountries.eu/rest/v2/name/" + country)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       const modalBody = document.getElementById("modal-body");
       const html = `
         <ul class="list-group">

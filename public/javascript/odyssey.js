@@ -28,8 +28,7 @@ const myWidget = cloudinary.createUploadWidget(
         url: "/api/details/",
         type: "POST",
         data: data,
-      }).then((result) => {
-        console.log(result);
+      }).then(() => {
         location.reload();
         return false;
       });
@@ -51,7 +50,6 @@ document.getElementById("upload_widget").addEventListener(
 //     url: "/api/details/" + id,
 //     method: "GET",
 //   }).then((res) => {
-//     console.log(res);
 //     res.Images.forEach((imageUrl) => {
 //       const newDiv = $("<div>");
 //       const newImg = $("<img>");
