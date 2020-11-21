@@ -58,7 +58,6 @@
         // When the form is submitted, we validate there's a title and body entered
         postForm.on("submit", function (event) {
             event.preventDefault();
-            console.log(bodyInput.val(), titleInput.val())
             var cityData = {
             cityName : titleInput.val().trim(),
             };
