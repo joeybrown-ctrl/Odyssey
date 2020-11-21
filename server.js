@@ -21,7 +21,7 @@ const passport = require("./config/passport");
 const routes = require("./controllers");
 
 // Setting up port and requiring models for syncing
-const PORT = process.env.PORT || 2000;
+const PORT = process.env.PORT || 8080;
 const db = require("./models");
 
 // Bringing in Morgan, a nice logger for our server
