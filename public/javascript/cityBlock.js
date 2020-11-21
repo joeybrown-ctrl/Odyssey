@@ -17,12 +17,15 @@ function getDetails() {
   fetch("https://restcountries.eu/rest/v2/name/" + country)
     .then((res) => res.json())
     .then((data) => {
+      console.log(data);
       const modalBody = document.getElementById("modal-body");
       const html = `
         <ul class="list-group">
             <li class="list-group-item">${data[0].name}</li>
             <li class="list-group-item">${data[0].region}</li>
             <li class="list-group-item">${data[0].capital}</li>
+            <li class="list-group-item">${data[0].currencies[0].code}</li>
+            <li class="list-group-item">${data[0].languages[0].name}</li>
             <li class="list-group-item"><img src="${data[0].flag}" width="50" height="50" alt="country"/></li>
         </ul>
         `;

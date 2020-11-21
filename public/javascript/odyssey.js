@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  getImages();
+  // getImages();
   $(".slick").slick({});
 });
 
@@ -41,18 +41,20 @@ document.getElementById("upload_widget").addEventListener(
   false
 );
 
-function getImages() {
-  $.ajax({
-    url: "/api/details/",
-    method: "GET",
-  }).then((res) => {
-    res.forEach((imageUrl) => {
-      const newDiv = $("<div>");
-      const newImg = $("<img>");
-      newImg.addClass("userImages");
-      newImg.attr("src", imageUrl.image);
-      newDiv.append(newImg);
-      $("#images").append(newDiv);
-    });
-  });
-}
+// function getImages() {
+//   const id = window.location.pathname.split("/")[2];
+//   $.ajax({
+//     url: "/api/details/" + id,
+//     method: "GET",
+//   }).then((res) => {
+//     console.log(res);
+//     res.Images.forEach((imageUrl) => {
+//       const newDiv = $("<div>");
+//       const newImg = $("<img>");
+//       newImg.addClass("userImages");
+//       newImg.attr("src", imageUrl.image);
+//       newDiv.append(newImg);
+//       $("#images").append(newDiv);
+//     });
+//   });
+// }
