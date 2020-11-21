@@ -1,3 +1,9 @@
+
+body {
+	background-image: url("../images/foggy_birds.png");
+
+}
+
 .heroImage {
 	background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url("../images/proj-2-img-top.jpg");
 	height: 100%;
