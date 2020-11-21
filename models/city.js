@@ -17,8 +17,8 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: true,
       },
     });
-    City.hasMany(models.Note, {onDelete: "cascade", hooks: true});
-    City.hasMany(models.Image,{onDelete: "cascade", hooks: true});
+    City.hasMany(models.Note, { onDelete: "cascade", hooks: true });
+    City.hasMany(models.Image, { onDelete: "cascade", hooks: true });
   };
 
   return City;

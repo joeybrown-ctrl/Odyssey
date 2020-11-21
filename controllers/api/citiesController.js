@@ -4,10 +4,10 @@ const router = require("express").Router();
 /**
  * City - Read All
  */
-router.get("/", (req, res)  => {
+router.get("/", (req, res) => {
   db.City.findAll({
-     where: { UserId: req.user.id}
-    })
+    where: { UserId: req.user.id },
+  })
     .then((dbModel) => res.json(dbModel))
     .catch((err) => res.status(422).json(err));
 });

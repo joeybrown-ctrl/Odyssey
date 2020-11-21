@@ -16,7 +16,6 @@ router.get("/:id", (req, res) => {
     .catch((err) => res.status(422).json(err));
 });
 
-
 /**
  * User Read - One
  */

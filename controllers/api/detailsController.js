@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
  * Image - Read One
  */
 router.get("/:id", (req, res) => {
-  db.City.findByPk(req.params.id, { include: db.Image}) 
+  db.City.findByPk(req.params.id, { include: db.Image })
     .then((dbModel) => res.json(dbModel))
     .catch((err) => res.status(422).json(err));
 });

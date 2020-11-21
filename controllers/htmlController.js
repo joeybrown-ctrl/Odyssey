@@ -4,7 +4,7 @@ const db = require("../models");
 
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
-const user = require("../models/user");
+// let  user = require("../models/user");
 
 /**
  * Home Page
@@ -35,17 +35,14 @@ router.get("/signup", (req, res) => {
  * Login page
  */
 router.get("/login", (req, res) => {
-
-  db.User.findAll({ raw: true, include: [db.City] }) // Joins User to Posts! And scrapes all the sequelize stuff off
-    .then((dbModel) => {
-      if (req.user) {
-        res.redirect("/");
-      } else {
-        res.render("login", { user: req.user });
-      }
-    })
-
- 
+  // db.User.findAll({ raw: true, include: [db.City] }) // Joins User to Posts! And scrapes all the sequelize stuff off
+  // .then((dbModel) => {
+  if (req.user) {
+    res.redirect("/");
+  } else {
+    res.render("login", { user: req.user });
+  }
+  // });
 });
 
 /**
@@ -54,11 +51,13 @@ router.get("/login", (req, res) => {
  */
 router.get("/city", isAuthenticated, (req, res) => {
   console.log(req);
-  db.City.findAll({ where: { UserId: req.user.id} ,raw: true, include: [db.User] }) // Joins User to Posts! And scrapes all the sequelize stuff off
+  db.City.findAll({
+    where: { UserId: req.user.id },
+    raw: true,
+    include: [db.User],
+  }) // Joins User to Posts! And scrapes all the sequelize stuff off
     .then((dbModel) => {
-      
-
-      res.render("cities", {data: dbModel, user: req.user});
+      res.render("cities", { data: dbModel, user: req.user });
       // console.log(req.user)
     })
     .catch((err) => res.status(422).json(err));
@@ -74,7 +73,10 @@ router.get("/details/:id", isAuthenticated, (req, res) => {
   //     res.render("details", { user: req.user, datac: details });
   //   })
   // include left join
-  db.City.findOne({ where: { id: req.params.id }, include: [{model:db.Note}, {model:db.Image}] })
+  db.City.findOne({
+    where: { id: req.params.id },
+    include: [{ model: db.Note }, { model: db.Image }],
+  })
     .then((dbModel) => {
       // delete dbModel._previousDataValues;
       // console.log(dbModel);
