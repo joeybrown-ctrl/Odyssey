@@ -49,6 +49,14 @@
 
   ## Built With
 
+* [SendGrid](https://sendgrid.com)
+* [REST Countries](https://restcountries.eu/)
+* [Cloudinary](https://cloudinary.com/)
+* [Passport](http://www.passportjs.org/packages/passport-npm/)
+* [Sequelize](https://sequelize.org/master/index.html)
+* [ES Lint](https://eslint.org/)
+* [Travis](https://travis-ci.org/)
+* [Node.js](https://nodejs.org/en/about/)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Bootstrap](https://getbootstrap.com/)
 * [jQuery](https://jquery.com/)
@@ -67,13 +75,13 @@
 * [Saida Arevalo](https://github.com/saida179)
 * [Joey Brown](https://github.com/joeybrown-ctrl)
 * [Luis Diaz](https://github.com/luis26308)
-* [Andrew Hoffman](https://github.com/alhoffiq)
+* [Andrew Hoff](https://github.com/alhoffiq)
 
 <br>
 
   ## Questions 
   
-* [Send me an email](mailto:gjoey.brown@gmail.com)
+* [Send me an email](mailto:odyssey.travelogue@gmail.com)
   
 * [Reach out to me on Github](https://github.com/joeybrown-ctrl)
 

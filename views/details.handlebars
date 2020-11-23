@@ -19,9 +19,8 @@
     <div class="row justify-content-center">
         <div class="col-md text-center text-white">
             <h4 class="display-6">upload and view pictures</h4>
-            {{!-- <p>upload photos using Cloudinary and view them here on Odyssey</p> --}}
-            <button class="btn btn-primary" id="upload_widget">upload</button>
-
+            <button class="btn btn-primary carousel-btn" id="upload_widget">upload</button>
+            <hr>
             <div class="slick mx-auto" style="width: 90%;" id="images"> {{!--Div that contains all carousel images--}}
                 {{#each datac.Images}}
                 <div><img class="userImages rounded" src="{{this.dataValues.image}}" alt={{this.dataValues.caption}}>
@@ -40,7 +39,6 @@
             <div class="card text-center">
                 <div class="card-header bg-dark text-white">
                     <h5 class="card-title text-center">log notes</h5>
-                    {{!-- <p>jot down plans or past observations</p> --}}
                 </div>
                 <div class="card-body bg-dark text-white">
                     <div class="row justify-content-center">

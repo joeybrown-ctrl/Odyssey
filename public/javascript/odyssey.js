@@ -3,8 +3,8 @@ $(document).ready(() => {
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 3,
-    nextArrow: "<button class='btn btn-primary carousel-btn'>Next</button>",
-    prevArrow: "<button class='btn btn-primary carousel-btn'>Previous</button>",
+    nextArrow: "<button class='btn btn-primary carousel-btn'>next</button>",
+    prevArrow: "<button class='btn btn-primary carousel-btn'>previous</button>",
   });
 });
 
