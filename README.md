@@ -32,7 +32,7 @@
 
   <hr>
 
-[image of Odyssey's landing page](https://raw.githubusercontent.com/joeybrown-ctrl/Odyssey/main/public/images/indexPage.png)
+![image of Odyssey's landing page](https://raw.githubusercontent.com/joeybrown-ctrl/Odyssey/main/public/images/indexPage.png)
 
   <hr>
 
