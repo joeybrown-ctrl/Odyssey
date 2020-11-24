@@ -32,7 +32,7 @@
 
   <hr>
 
-[For deployed version, click me](https://team-zeus.herokuapp.com/)
+[image of Odyssey's landing page](https://github.com/joeybrown-ctrl/Odyssey/blob/main/public/images/indexPage.png)
 
   <hr>
 
