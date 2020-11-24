@@ -2,7 +2,7 @@
 
 **version 1.0.0**
 
-[For deployed version, click me]()
+[For deployed version, click me](https://team-zeus.herokuapp.com/)
 
 <br>
 
@@ -81,9 +81,9 @@
 
   ## Questions 
   
-* [Send me an email](mailto:odyssey.travelogue@gmail.com)
+* [Send us an email](mailto:odyssey.travelogue@gmail.com)
   
-* [Reach out to me on Github](https://github.com/joeybrown-ctrl)
+* [Reach out on Github](https://github.com/joeybrown-ctrl)
 
 <hr>
 
