@@ -1,5 +1,7 @@
 # Odyssey
 
+![license](https://img.shields.io/badge/License-MIT-blue.svg)
+
 **version 1.0.0**
 
 [For deployed version, click me](https://team-zeus.herokuapp.com/)
