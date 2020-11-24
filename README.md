@@ -26,6 +26,8 @@
 
   Odyssey is a scrapbooking travel app that allows the user to create country-specific travelogues filled with pictures and notes. The app utilizes the MVC design pattern, and is built with Node.js, Handlebars.js, and Sequelize. It is deployed to Heroku with a jawsDB database.
 
+  When the user signs up, they are sent an email notification from Odyssey. The user is then able to add a destination country. The searched country has a 'details' modal showing country data (capital city, continent/region, currency, flag), which pulls data using REST Countries API. When the user hits the 'log' button, they are taken to a travelogue where they can log notes about a journey, and upload pictures to the page using Cloudinary with a Slick carousel. The travelogues for each country are saved to a database so the user may return at any time to create or update their travelogues.
+
   ### User Story 
 
   ```
@@ -40,7 +42,7 @@
   GIVEN a scrapbooking travel app,
   WHEN I sign up I am sent an email notification.
   WHEN I log in and enter a country name,
-  THEN I can click the 'details' button and find country-specific information (capital city, continent/region, flag).
+  THEN I can click the 'details' button and find country-specific information (capital city, continent/region, currency, flag).
   WHEN I click the 'log' button,
   THEN I can create a country-specific travelogue by uploading photos and logging notes.
   ```
@@ -52,6 +54,7 @@
 * [SendGrid](https://sendgrid.com)
 * [REST Countries](https://restcountries.eu/)
 * [Cloudinary](https://cloudinary.com/)
+* [Slick](https://kenwheeler.github.io/slick/)
 * [Passport](http://www.passportjs.org/packages/passport-npm/)
 * [Sequelize](https://sequelize.org/master/index.html)
 * [ES Lint](https://eslint.org/)
