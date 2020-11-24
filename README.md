@@ -30,6 +30,12 @@
 
   When the user signs up, they are sent an email notification from Odyssey. The user is then able to add a destination country. The searched country has a 'details' modal showing country data (capital city, continent/region, currency, flag), which pulls data using REST Countries API. When the user hits the 'log' button, they are taken to a travelogue where they can log notes about a journey, and upload pictures to the page using Cloudinary with a Slick carousel. The travelogues for each country are saved to a database so the user may return at any time to create or update their travelogues.
 
+  <hr>
+
+[For deployed version, click me](https://team-zeus.herokuapp.com/)
+
+  <hr>
+
   ### User Story 
 
   ```
