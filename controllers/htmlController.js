@@ -10,6 +10,9 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
  * Home Page
  */
 router.get("/", (req, res) => {
+  if (req.user) {
+    res.redirect("/city");
+  }
   res.render("index", { user: req.user });
 });
 
@@ -25,7 +28,7 @@ router.get("/home", (req, res) => {
  */
 router.get("/signup", (req, res) => {
   if (req.user) {
-    res.redirect("/");
+    res.redirect("/city");
   } else {
     res.render("signup", { user: req.user });
   }
@@ -38,7 +41,7 @@ router.get("/login", (req, res) => {
   // db.User.findAll({ raw: true, include: [db.City] }) // Joins User to Posts! And scrapes all the sequelize stuff off
   // .then((dbModel) => {
   if (req.user) {
-    res.redirect("/");
+    res.redirect("/city");
   } else {
     res.render("login", { user: req.user });
   }
