@@ -6,6 +6,8 @@
 
 [For deployed version, click me](https://team-zeus.herokuapp.com/)
 
+Guest login is test@test.com (password: test)
+
 <br>
 
   ## Table of Contents
